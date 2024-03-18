@@ -1,6 +1,8 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,7 +16,7 @@ export class LandingPageComponent {
 
   @ViewChild('scriptElement', { static: true }) scriptElement: ElementRef | undefined;
 
-  constructor(private elRef: ElementRef, private route: Router,private fb: FormBuilder) { 
+  constructor(private elRef: ElementRef, private route: Router, private fb: FormBuilder) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -37,7 +39,7 @@ export class LandingPageComponent {
     this.isScrolled = window.scrollY > 50;
   }
 
-  
+
   showImage: boolean = false;
   selectedImage: string = '';
 
@@ -64,9 +66,24 @@ export class LandingPageComponent {
   }
 
   onSubmit() {
+    console.log('Form values:', this.contactForm.value);
+
     if (this.contactForm.valid) {
       console.log('Form values:', this.contactForm.value);
-      // You can send the form data to your backend or perform other actions here
+      emailjs.send("service_q9prn92", "template_wn4geiw", {
+        name: this.contactForm.value.name,
+        message: this.contactForm.value.message,
+        emailid: this.contactForm.value.email,
+      });
+      Swal.fire({
+        title: "Done!",
+        text: "Send Email Successfully!",
+        icon: "success"
+      }).then((res) => {
+        if (res.isConfirmed) {
+          this.contactForm.reset();
+        }
+      });
     } else {
       // Handle form validation errors
     }
