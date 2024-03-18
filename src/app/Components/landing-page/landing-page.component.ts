@@ -70,6 +70,7 @@ export class LandingPageComponent {
 
     if (this.contactForm.valid) {
       console.log('Form values:', this.contactForm.value);
+      emailjs.init('5cYgjfhsJVzlkDYdF')
       emailjs.send("service_q9prn92", "template_wn4geiw", {
         name: this.contactForm.value.name,
         message: this.contactForm.value.message,
