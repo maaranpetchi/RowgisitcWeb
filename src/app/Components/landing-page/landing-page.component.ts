@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +9,18 @@ import { Router } from '@angular/router';
 })
 export class LandingPageComponent {
 
+  contactForm: FormGroup;
 
 
   @ViewChild('scriptElement', { static: true }) scriptElement: ElementRef | undefined;
 
-  constructor(private elRef: ElementRef, private route: Router) { }
+  constructor(private elRef: ElementRef, private route: Router,private fb: FormBuilder) { 
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required]
+    });
+  }
 
   scrollToSection(section: string): void {
     const element = this.elRef.nativeElement.querySelector(`#${section}`);
@@ -53,5 +61,14 @@ export class LandingPageComponent {
   navigatetoTerms() {
     const url = '/Rowgistic/TermsAndCondition';
     window.open(this.route.serializeUrl(this.route.createUrlTree([url])), '_blank');
+  }
+
+  onSubmit() {
+    if (this.contactForm.valid) {
+      console.log('Form values:', this.contactForm.value);
+      // You can send the form data to your backend or perform other actions here
+    } else {
+      // Handle form validation errors
+    }
   }
 }
