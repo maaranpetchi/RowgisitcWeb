@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { LandingPageComponent } from './Components/landing-page/landing-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
+import { TermsandconditionComponent } from './Components/termsandcondition/termsandcondition.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    TermsandconditionComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
-
+    NgxDocViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
