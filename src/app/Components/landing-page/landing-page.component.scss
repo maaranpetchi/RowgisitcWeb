@@ -1,13 +1,21 @@
-* {
-	font-family: 'Montserrat', sans-serif;
-}
+// * {
+// 	font-family: 'Montserrat', sans-serif;
+// }
 
 .bg-light {
 	background-color: transparent !important;
 }
 
 .bg-blue {
-    background-color: #fa7708 !important;
+	background-color: #fa7708 !important;
+}
+
+nav{
+	top:0 !important
+}
+li#downloadSection {
+    border-radius: 50px;
+    background: #fa7708;
 }
 
 .carousel-item {
@@ -15,17 +23,22 @@
 	min-height: 300px;
 }
 
-img.appstore {
-	height: 46px;
+img.downloadApp {
+    height: 55px;
 }
-
+.fixed-top{
+	position: absolute;
+}
 .carousel-caption {
-	bottom: 179px;
+	bottom: 63px;
 }
-
-#NavItem{
+#carouselImage{
+	filter: brightness(0.4);
+}
+#NavItem {
 	cursor: pointer;
 }
+
 .carousel-caption h5 {
 	font-size: 45px;
 	text-transform: uppercase;
@@ -161,16 +174,35 @@ div#flex {
 	cursor: pointer;
 	transition: transform 0.2s ease-in-out;
 	margin-bottom: 20px;
+	background-color: transparent;
 }
-
+.card-title{
+	color: white;
+}
+.card-text{
+	color: white;
+}
 .card:hover {
 	transform: scale(1.05);
 	background-color: #cccdd0;
 }
 
-.thirdContainer {
-    margin-bottom: 65px;
+.card.active {
+	background-color:transparent;
 }
+
+.thirdContainer {
+	// margin-bottom: 65px;
+padding-top:20px;
+background-image: url(../../../assets/FeatureBackground.png);
+}
+
+
+.eventHeading {
+    text-align: center;
+    color: white;
+}
+
 ////////////ProfileCard//////
 .about-team {
 	display: flex;
@@ -337,6 +369,17 @@ div#flex {
 
 
 /////////////////Contact form/////////
+img#topPics {
+    height: 141px;
+}
+.contactContainer {
+    background: #343A3C;
+}
+
+.contactContent {
+    color: white;
+}
+
 img.contactusImage {
 	height: 271px;
 }
@@ -349,6 +392,10 @@ ul {
 	list-style: none;
 }
 
+h5.title {
+    color: gray;
+}
+
 input {
 	overflow: hidden;
 }
@@ -359,6 +406,7 @@ input {
 	font-weight: 600;
 	font-family: "Poppins", sans-serif;
 	margin: 0 0 35px;
+	color: white;
 }
 
 .sec-pad {
@@ -366,12 +414,10 @@ input {
 	margin: 50px 0;
 }
 
-.contact-sec {
-	align-item: center;
-	display: flex;
-	// background-color: #5cbde466;
-	padding-bottom: 51px;
-
+.contact-sec{
+    display: flex;
+    padding-bottom: 51px;
+    margin-top: 0px;
 }
 
 .contact-sec .contact-ul li,
@@ -455,6 +501,10 @@ input {
 .contact-detail span .twitter:hover {
 	color: #fff;
 	background-color: #00acee;
+}
+.contact-form-wrapper.d-flex.justify-content-center {
+    background: white;
+    border-radius: 0px 0px 124px 0px;
 }
 
 form.contFrm {
@@ -613,7 +663,6 @@ form.contFrm {
 }
 
 
-.contact-form-wrapper {}
 
 .contact-form {
 	padding: 30px 40px;
@@ -698,8 +747,10 @@ img.getintouch {
 
 //////Download Mobile///////
 
-.downloadMobile {
-	padding-bottom: 20px;
+.downloadMobile{
+    padding: 69px;
+    margin-top: -50px;
+    background: #E2E2E2;
 }
 
 .imageDownload {
@@ -713,9 +764,9 @@ img.getintouch {
 	text-align: center;
 }
 
-img.mobileDownlaod {
-	width: 50vw;
-}
+// img.mobileDownlaod {
+// 	width: 100vw;
+// }
 
 
 //////Footer//////
@@ -744,13 +795,13 @@ ul {
 }
 
 .footer-col h4 {
-    font-size: 18px;
-    color: black;
-    text-transform: capitalize;
-    font-family: initial;
-    margin-bottom: 35px;
-    font-weight: 500;
-    position: relative;
+	font-size: 18px;
+	color: black;
+	text-transform: capitalize;
+	font-family: initial;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
 }
 
 .footer-col h4::before {
@@ -766,6 +817,11 @@ ul {
 
 .footer-col ul li:not(:last-child) {
 	margin-bottom: 10px;
+}
+
+
+img.downloadLink {
+    height: 59px;
 }
 
 .footer-col ul li a {
@@ -784,7 +840,9 @@ ul {
 	color: #e06d09;
 	padding-left: 8px;
 }
-
+img.footerLogo {
+    height: 36px;
+}
 .footer-col .social-links a {
 	display: inline-block;
 	height: 40px;

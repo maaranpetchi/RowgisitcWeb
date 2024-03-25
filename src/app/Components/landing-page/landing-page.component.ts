@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import emailjs from '@emailjs/browser';
@@ -9,9 +9,17 @@ import Swal from 'sweetalert2';
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
-export class LandingPageComponent {
+export class LandingPageComponent implements OnInit {
 
   contactForm: FormGroup;
+  currentCardIndex: number = 0;
+  intervalId: any;
+
+  cards = [
+    { title: 'Event', imageUrl: '../../../assets/Events.png', text: 'Hi, welcome to Rowgistic' },
+    { title: 'MarketPlace', imageUrl: '../../../assets/rowingBoat2.jpeg', text: 'Hi, welcome to Rowgistic' },
+    { title: 'Boats', imageUrl: '../../../assets/rowingBoat1.jpeg', text: 'Hi, welcome to Rowgistic' }
+  ];
 
 
   @ViewChild('scriptElement', { static: true }) scriptElement: ElementRef | undefined;
@@ -24,6 +32,25 @@ export class LandingPageComponent {
     });
   }
 
+  ngOnInit() {
+    this.startSlideshow();
+  }
+
+  startSlideshow() {
+    this.intervalId = setInterval(() => {
+      this.showNextCard();
+    }, 3000);
+  }
+
+  stopSlideshow() {
+    clearInterval(this.intervalId);
+  }
+
+  showNextCard() {
+    this.currentCardIndex = (this.currentCardIndex + 1) % this.cards.length;
+  }
+
+
   scrollToSection(section: string): void {
     const element = this.elRef.nativeElement.querySelector(`#${section}`);
     if (element) {
@@ -34,11 +61,25 @@ export class LandingPageComponent {
 
   isScrolled: boolean = false;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.isScrolled = window.scrollY > 50;
-  }
 
+  imageBrightness: number = 1; // Initial brightness value
+
+
+  @HostListener('window:scroll', [])
+
+
+
+//   onWindowScroll() {
+//   const scrollY = window.scrollY || window.pageYOffset;
+//   if (scrollY > 50) {
+//     this.isScrolled = window.scrollY > 50;
+//     this.imageBrightness = 0.3;
+//   } else {
+//     this.isScrolled = window.scrollY > 50;
+//     // User is at the top, set brightness back to 1
+//     this.imageBrightness = 1;
+//   }
+// }
 
   showImage: boolean = false;
   selectedImage: string = '';
