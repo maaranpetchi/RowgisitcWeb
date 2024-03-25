@@ -1,6 +1,9 @@
-// * {
-// 	font-family: 'Montserrat', sans-serif;
-// }
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+	font-family: "Inter", sans-serif;
+}
 
 .bg-light {
 	background-color: transparent !important;
@@ -414,9 +417,29 @@ input {
 	margin: 50px 0;
 }
 
-.contact-sec{
+.contact-wrapper {
+    position: relative;
     display: flex;
-    padding-bottom: 51px;
+    justify-content: center;
+}
+
+.vector {
+    position: absolute;
+    left: 0;
+    top: 89%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+.vector1 {
+    position: absolute;
+    left: 90%;
+    top: 24%;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+.contact-sec {
+    display: flex;
+    /* padding-bottom: 51px; */
     margin-top: 0px;
 }
 
@@ -615,6 +638,8 @@ form.contFrm {
 	}
 }
 
+
+
 ////////////////get in touch////////////
 @media (max-width: 992px) {
 	.contact-sec .container {
@@ -665,7 +690,7 @@ form.contFrm {
 
 
 .contact-form {
-	padding: 30px 40px;
+	padding: 16px 38px;
 	// background-color: #e06d09;
 	border-radius: 12px;
 	max-width: 400px;
@@ -741,10 +766,12 @@ form.contFrm {
 }
 
 img.getintouch {
-	width: 50vw;
-	margin-top: 47px;
-}
+	height: 480px;
 
+}
+.vectorForm{
+	height: 150px;
+}
 //////Download Mobile///////
 
 .downloadMobile{

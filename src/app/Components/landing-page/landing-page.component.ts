@@ -17,8 +17,8 @@ export class LandingPageComponent implements OnInit {
 
   cards = [
     { title: 'Event', imageUrl: '../../../assets/Events.png', text: 'Hi, welcome to Rowgistic' },
-    { title: 'MarketPlace', imageUrl: '../../../assets/rowingBoat2.jpeg', text: 'Hi, welcome to Rowgistic' },
-    { title: 'Boats', imageUrl: '../../../assets/rowingBoat1.jpeg', text: 'Hi, welcome to Rowgistic' }
+    { title: 'MarketPlace', imageUrl: '../../../assets/marketPlace.png', text: 'Hi, welcome to Rowgistic' },
+    { title: 'Boats', imageUrl: '../../../assets/BoatList.png', text: 'Hi, welcome to Rowgistic' }
   ];
 
 
