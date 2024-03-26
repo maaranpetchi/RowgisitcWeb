@@ -16,8 +16,8 @@ export class LandingPageComponent implements OnInit {
   intervalId: any;
 
   cards = [
-    { title: 'Event', imageUrl: '../../../assets/Events.png', text: 'Hi, welcome to Rowgistic' },
-    { title: 'MarketPlace', imageUrl: '../../../assets/marketPlace.png', text: 'Hi, welcome to Rowgistic' },
+    { title: 'Event', imageUrl: '../../../assets/EventList.png', text: 'Hi, welcome to Rowgistic' },
+    // { title: 'MarketPlace', imageUrl: '../../../assets/marketPlace.png', text: 'Hi, welcome to Rowgistic' },
     { title: 'Boats', imageUrl: '../../../assets/BoatList.png', text: 'Hi, welcome to Rowgistic' }
   ];
 
