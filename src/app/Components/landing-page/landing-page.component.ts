@@ -35,7 +35,13 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() {
     this.startSlideshow();
   }
+  isNavbarCollapsed = true;
+  isBodyBlurred = false;
 
+  toggleNavbar() {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
+    this.isBodyBlurred = !this.isNavbarCollapsed;
+  }
   startSlideshow() {
     this.intervalId = setInterval(() => {
       this.showNextCard();

@@ -1,26 +1,46 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 * {
-	font-family: "Inter", sans-serif ;
+	font-family: "Inter", sans-serif;
+	padding: 0%;
+	margin: 0%;
 }
-h1, h2, h3, h4, h5 {
-    font-weight: bold;
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: bold;
 }
+
 .bg-light {
 	background-color: transparent !important;
+}
+
+body {
+	transition: filter 0.3s ease;
+}
+
+.blur-body {
+	filter: blur(5px);
 }
 
 .bg-blue {
 	background-color: #fa7708 !important;
 }
 
-nav{
-	top:0 !important
+.contentContact {
+	padding-bottom: 61px;
 }
+
+nav {
+	top: 0 !important
+}
+
 li#downloadSection {
-    border-radius: 50px;
-    background: #f26d1e;
+	border-radius: 50px;
+	background: #f26d1e;
 }
 
 .carousel-item {
@@ -29,17 +49,21 @@ li#downloadSection {
 }
 
 img.downloadApp {
-    height: 55px;
+	height: 55px;
 }
-.fixed-top{
+
+.fixed-top {
 	position: absolute;
 }
+
 .carousel-caption {
 	bottom: 63px;
 }
-#carouselImage{
+
+#carouselImage {
 	filter: brightness(0.4);
 }
+
 #NavItem {
 	cursor: pointer;
 }
@@ -113,10 +137,12 @@ img.downloadApp {
 	.navbar-nav {
 		text-align: center;
 		background: rgba(0, 0, 0, 0.5);
+		height: 124px;
+
 	}
 
 	.carousel-caption {
-		bottom: 166px;
+		bottom: 27px;
 	}
 
 	.carousel-caption h5 {
@@ -127,6 +153,11 @@ img.downloadApp {
 	.carousel-caption a {
 		padding: 10px 15px;
 		font-size: 15px;
+	}
+
+	img.downloadApp {
+		height: 55px;
+		margin-left: -20px;
 	}
 }
 
@@ -157,8 +188,9 @@ img.mobilePic {
 	padding: 20px;
 	width: 110%;
 }
-.nav-link{
-	font-family:'inter',serif;
+
+.nav-link {
+	font-family: 'inter', serif;
 }
 
 .mobilePic {
@@ -187,31 +219,34 @@ div#flex {
 	margin-bottom: 20px;
 	background-color: transparent;
 }
-.card-title{
+
+.card-title {
 	color: white;
 }
-.card-text{
+
+.card-text {
 	color: white;
 }
+
 .card:hover {
 	transform: scale(1.05);
 	background-color: #cccdd0;
 }
 
 .card.active {
-	background-color:#cccdd0;
+	background-color: #cccdd0;
 }
 
 .thirdContainer {
 	// margin-bottom: 65px;
-padding-top:20px;
-background-image: url(../../../assets/FeatureBackground.png);
+	padding-top: 20px;
+	background-image: url(../../../assets/FeatureBackground.png);
 }
 
 
 .eventHeading {
-    text-align: center;
-    color: white;
+	text-align: center;
+	color: white;
 }
 
 ////////////ProfileCard//////
@@ -381,14 +416,16 @@ background-image: url(../../../assets/FeatureBackground.png);
 
 /////////////////Contact form/////////
 img#topPics {
-    height: 141px;
+	height: 141px;
 }
+
 .contactContainer {
-    background: #343A3C;
+	background: #343A3C;
 }
 
 .contactContent {
-    color: white;
+	color: white;
+	padding: 2px;
 }
 
 img.contactusImage {
@@ -404,7 +441,7 @@ ul {
 }
 
 h5.title {
-    color: gray;
+	color: gray;
 }
 
 input {
@@ -426,36 +463,38 @@ input {
 }
 
 .contact-wrapper {
-    position: relative;
-    display: flex;
-    justify-content: center;
+	position: relative;
+	display: flex;
+	justify-content: center;
 }
 
 .vector {
-    position: absolute;
-    left: 0;
-    top: 89%;
-    transform: translateY(-50%);
-    z-index: -1;
+	position: absolute;
+	left: 0;
+	top: 89%;
+	transform: translateY(-50%);
+	z-index: -1;
 }
+
 .vector1 {
-    position: absolute;
-    left: 90%;
-    top: 24%;
-    transform: translateY(-50%);
-    z-index: -1;
+	position: absolute;
+	left: 90%;
+	top: 24%;
+	transform: translateY(-50%);
+	z-index: -1;
 }
+
 .contact-sec {
-    display: flex;
-    /* padding-bottom: 51px; */
-    margin-top: 0px;
+	display: flex;
+	/* padding-bottom: 51px; */
+	margin-top: 0px;
 }
 
 .contact-sec .contact-ul li,
 .contact-ul b {
 	font-size: 20px;
 	margin: 10px 0;
-	font-family:"Inter", sans-serif;
+	font-family: "Inter", sans-serif;
 	word-wrap: break-word;
 }
 
@@ -533,9 +572,10 @@ input {
 	color: #fff;
 	background-color: #00acee;
 }
+
 .contact-form-wrapper.d-flex.justify-content-center {
-    background: white;
-    border-radius: 0px 0px 124px 0px;
+	background: white;
+	border-radius: 0px 0px 124px 0px;
 }
 
 form.contFrm {
@@ -777,15 +817,17 @@ img.getintouch {
 	height: 480px;
 
 }
-.vectorForm{
+
+.vectorForm {
 	height: 150px;
 }
+
 //////Download Mobile///////
 
-.downloadMobile{
-    padding: 69px;
-    margin-top: -50px;
-    background: #E2E2E2;
+.downloadMobile {
+	padding: 69px;
+	margin-top: -50px;
+	background: #E2E2E2;
 }
 
 .imageDownload {
@@ -856,7 +898,7 @@ ul {
 
 
 img.downloadLink {
-    height: 59px;
+	height: 59px;
 }
 
 .footer-col ul li a {
@@ -875,9 +917,11 @@ img.downloadLink {
 	color: #e06d09;
 	padding-left: 8px;
 }
+
 img.footerLogo {
-    height: 36px;
+	height: 36px;
 }
+
 .footer-col .social-links a {
 	display: inline-block;
 	height: 40px;

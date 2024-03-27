@@ -14,7 +14,7 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 
-<body>
+<body > 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
 		[ngClass]="{'bg-light': !isScrolled, 'bg-blue': isScrolled}">
 
@@ -22,7 +22,7 @@
 			<a class="navbar-brand" href="#"><img src="../../../assets/logo.png"
 					[style.filter]="'brightness(' + imageBrightness + ')'" height="60" alt="logo" srcset=""></a>
 			<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-				class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
+				class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" (click)="toggleNavbar()"
 				type="button"><span class="navbar-toggler-icon"></span></button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -43,7 +43,7 @@
 		</div>
 	</nav>
 
-
+<div [ngClass]="{'blur-body': isBodyBlurred}">
 
 
 	<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
@@ -140,35 +140,7 @@
 	<div class="heightBreak"></div>
 
 
-	<!-- <div class="mobileSection" data-aos="fade-left">
-		<div class="container-fluid">
-			<div class="row" id="flex">
-				<div class="col-md-8">
-					<div class="eventSection">
-						<div class="eventContent">
-							<div class="contentSection bg-peachpuff">
-								<div class="heading">
-									<h1>Easy to create the events and sell the boat in marketplace</h1>
-								</div>
-								<div class="paracontent">
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-										Ipsum has been the industry's standard dummy text ever since</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="eventImage">
-						<div class="imageSection text-center">
-							<img src="../../../assets/MobilePic.png" alt="MobilePic" class="mobilePic" srcset="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!--thirdSection-->
+
 	<div class="thirdContainer" data-aos="fade-up" data-aos-duration="4000">
 		<div class="container">
 			<div class="eventHeading">
@@ -194,71 +166,6 @@
 		</div>
 
 	</div>
-
-	<!-- <div class="heightBreak"></div> -->
-	<!-- 
-	<div class="AboutTeam" id="AboutSection">
-		<div class="about-team">
-			<h1 class="aboutTeamTitle">ABOUT THE TEAM</h1>
-		</div>
-		<div class="wrapper">
-			<div class="card">
-				<div class="image">
-					<img src="../../../assets/Morten.jpeg" alt="" />
-
-				</div>
-				<div class="content">
-					<h3>MORTEN ZAKARIASSEN<br /><span>CHAIRMAN</span></h3>
-					<ul>
-						<a href="#"> <i class="fab fa-linkedin"></i></a>
-						<a href="#"> <i class="fab fa-instagram"></i></a>
-						<a href="#"> <i class="fab fa-facebook-square"></i></a>
-					</ul>
-				</div>
-			</div>
-			<div class="card">
-				<div class="image">
-					<img src="../../../assets/Max.jpeg" alt="" />
-				</div>
-				<div class="content">
-					<h3>MAXIMIILAN ZAKARIASSEN<br /><span>CEO</span></h3>
-					<ul>
-						<a href="#"> <i class="fab fa-linkedin"></i></a>
-						<a href="#"> <i class="fab fa-instagram"></i></a>
-						<a href="#"> <i class="fab fa-facebook-square"></i></a>
-					</ul>
-				</div>
-			</div>
-			<div class="card">
-				<div class="image">
-					<img src="../../../assets/JR7_0708.jpg" alt="" />
-				</div>
-				<div class="content">
-					<h3>DAMIR CAUSVIC<br /><span>COO</span></h3>
-					<ul>
-						<a href="#"> <i class="fab fa-linkedin"></i></a>
-						<a href="#"> <i class="fab fa-instagram"></i></a>
-						<a href="#"> <i class="fab fa-facebook-square"></i></a>
-					</ul>
-				</div>
-			</div>
-			<div class="card">
-				<div class="image">
-					<img src="../../../assets/roeland-profile.jpeg" alt="" />
-				</div>
-				<div class="content">
-					<h3>ROLELAND VAN NIEUWKREK<br /><span>CTO</span></h3>
-					<ul>
-						<a href="#"> <i class="fab fa-linkedin"></i></a>
-						<a href="#"> <i class="fab fa-instagram"></i></a>
-						<a href="#"> <i class="fab fa-facebook-square"></i></a>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-	</div> -->
-	<!--ContactForm-->
 
 
 
@@ -330,7 +237,6 @@
 
 
 					<div class="col-md-6">
-						<!-- <img src="../../../assets/Vector.png" class="vector"  alt="" srcset=""> -->
 
 						<img src="../../../assets/ContactGirl.png" class="getintouch" alt="" srcset="">
 					</div>
@@ -338,7 +244,6 @@
 					<div class="col-md-6">
 						<div class="rightContent">
 							<img src="../../../assets/Vector.png" class="vector" style="height:120px" alt="" srcset="">
-							<!-- <img src="../../../assets/Vector.png" class="vector1" style="height:120px" alt="" srcset=""> -->
 
 							<div class="contact-form-wrapper d-flex justify-content-center">
 
@@ -387,7 +292,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						<img src="../../../assets/DownloadApp.png" alt="Download App" class="img-fluid">
+						<img src="../../../assets/DownloadApp.png" alt="Download App" id="downloadBanner" class="img-fluid">
 					</div>
 				</div>
 			</div>
@@ -430,15 +335,7 @@
 
 					</ul>
 				</div>
-				<!-- <div class="footer-col">
-					<h4>resources</h4>
-					<ul>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Articles</a></li>
-						<li><a href="#">Events</a></li>
-
-					</ul>
-				</div> -->
+			
 				<div class="footer-col">
 					<h4>follow us</h4>
 					<div class="social-links">
@@ -451,6 +348,7 @@
 			</div>
 		</div>
 	</footer>
+</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js">
