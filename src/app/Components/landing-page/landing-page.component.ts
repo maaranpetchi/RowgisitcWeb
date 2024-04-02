@@ -3,17 +3,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
+import { Firestore, collection, addDoc, collectionData, getDocs, where, query } from '@angular/fire/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
+
+
 export class LandingPageComponent implements OnInit {
 
   contactForm: FormGroup;
   currentCardIndex: number = 0;
   intervalId: any;
+  currentDate: string;
+  filteredEvents: any[] = [];
 
   cards = [
     { title: 'Event', imageUrl: '../../../assets/EventList.png', text: 'Hi, welcome to Rowgistic' },
@@ -23,17 +29,26 @@ export class LandingPageComponent implements OnInit {
 
 
   @ViewChild('scriptElement', { static: true }) scriptElement: ElementRef | undefined;
+  CreatedDate: any;
+  eventNames: any;
+  eventLocations: any;
+  eventId: any;
+  eventTransactionData: any;
+  eventTransactions: any;
 
-  constructor(private elRef: ElementRef, private route: Router, private fb: FormBuilder) {
+  constructor(private elRef: ElementRef, private route: Router, private fb: FormBuilder, private firestore: Firestore) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required]
     });
+
+    this.currentDate = this.getCurrentDate();
+    this.filterData();
   }
 
   ngOnInit() {
-    this.startSlideshow();
+
   }
   isNavbarCollapsed = true;
   isBodyBlurred = false;
@@ -42,11 +57,8 @@ export class LandingPageComponent implements OnInit {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
     this.isBodyBlurred = !this.isNavbarCollapsed;
   }
-  startSlideshow() {
-    this.intervalId = setInterval(() => {
-      this.showNextCard();
-    }, 3000);
-  }
+
+
 
   stopSlideshow() {
     clearInterval(this.intervalId);
@@ -68,24 +80,11 @@ export class LandingPageComponent implements OnInit {
   isScrolled: boolean = false;
 
 
-  imageBrightness: number = 1; // Initial brightness value
-
+  imageBrightness: number = 1;
 
   @HostListener('window:scroll', [])
 
 
-
-//   onWindowScroll() {
-//   const scrollY = window.scrollY || window.pageYOffset;
-//   if (scrollY > 50) {
-//     this.isScrolled = window.scrollY > 50;
-//     this.imageBrightness = 0.3;
-//   } else {
-//     this.isScrolled = window.scrollY > 50;
-//     // User is at the top, set brightness back to 1
-//     this.imageBrightness = 1;
-//   }
-// }
 
   showImage: boolean = false;
   selectedImage: string = '';
@@ -111,7 +110,87 @@ export class LandingPageComponent implements OnInit {
     const url = '/Rowgistic/TermsAndCondition';
     window.open(this.route.serializeUrl(this.route.createUrlTree([url])), '_blank');
   }
+  getCurrentDate(): string {
+    const today = new Date();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    const year = today.getFullYear();
+    console.log(`${month}/${day}/${year}`, "CurrentDate");
 
+    return `${month}/${day}/${year}`;
+  }
+
+  formatDate(date: Date): string {
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const year = date.getFullYear();
+    console.log(`${month}/${day}/${year}`, "FormatEventDate");
+
+    return `${month}/${day}/${year}`;
+  }
+  boatIds: any;
+  participantIds: any;
+  filterData() {
+    const eventsRef = collection(this.firestore, 'events');
+    getDocs(eventsRef).then(querySnapshot => {
+      const eventData = querySnapshot.docs.map(snapshot => {
+        const eventData = snapshot.data();
+        const eventTimestamp = eventData['eventDate'].toDate();
+        const formattedEventDate = this.formatDate(eventTimestamp);
+
+        // If the event date matches the current date, return the event id
+        if (formattedEventDate === this.getCurrentDate()) {
+          return { ...eventData, eventDate: formattedEventDate, eventId: snapshot.id };
+        }
+
+        return null;
+      }).filter(event => event !== null);
+
+      this.filteredEvents = eventData;
+      this.eventNames = this.filteredEvents.map(event => event.eventName);
+      this.eventLocations = this.filteredEvents.map(event => event.eventLocation);
+      this.eventId = this.filteredEvents.map(event => event.eventId);
+
+      console.log("Filtered Events:", this.filteredEvents);
+      console.log("Event Names:", this.eventNames);
+      console.log("Event Locations:", this.eventLocations);
+      console.log("Event Ids:", this.eventId);
+
+      const eventTransactionsRef = collection(this.firestore, 'eventTransactions');
+      const q = query(eventTransactionsRef, where('eventId', '==', this.eventId));
+      getDocs(q).then(querySnapshot => {
+        this.eventTransactions = querySnapshot.docs.map(snapshot => {
+          this.eventTransactionData = snapshot.data();
+          const eventTransactionDoc = snapshot.ref.path;
+          return { ...this.eventTransactionData, eventTransactionDoc };
+        });
+        console.log('Event Transactions:', this.eventTransactions);
+
+
+    
+          this.boatIds = this.eventTransactions[0].boatId;
+          this.participantIds = this.eventTransactions[0].participants.map((participant:any) => participant.userId);
+    
+          console.log(this.boatIds,"BoatIds");
+          console.log(this.participantIds,"participantIds");
+
+          const userPromises = this.participantIds.map((participantId:any) => {
+            const userRef = doc(this.firestore, 'users', participantId);
+            return getDoc(userRef);
+          });
+    
+          Promise.all(userPromises).then(docSnapshots => {
+            const usersData = docSnapshots.map(docSnapshot => {
+              return docSnapshot.data();
+            });
+    
+            console.log('Users Data:', usersData);
+          });
+    
+        });
+
+    });
+  }
   onSubmit() {
     console.log('Form values:', this.contactForm.value);
 
@@ -133,7 +212,8 @@ export class LandingPageComponent implements OnInit {
         }
       });
     } else {
-      // Handle form validation errors
+
+      console.log(this.contactForm.value)
     }
   }
 }

@@ -8,6 +8,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { TermsandconditionComponent } from './Components/termsandcondition/termsandcondition.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database'; // For Firestore database
+import { environment } from 'src/Environments/environment';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+
+
 
 @NgModule({
   declarations: [
@@ -19,9 +26,11 @@ import { TermsandconditionComponent } from './Components/termsandcondition/terms
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrowserModule,
     HttpClientModule,
-    NgxDocViewerModule
+    NgxDocViewerModule,
+    provideFirebaseApp( ()=> initializeApp(environment.firebaseConfig)),
+    provideFirestore(()=> getFirestore()),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

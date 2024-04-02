@@ -141,32 +141,80 @@
 
 
 
-	<div class="thirdContainer" data-aos="fade-up" data-aos-duration="4000">
+	<div class="thirdContainer">
 		<div class="container">
 			<div class="eventHeading">
 				<h3>Feature of Rowgistic</h3>
 				<p>Voice of the Customers Successful , about Rowgistic!, Start Your Journey vTowards Success Today!</p>
 			</div>
-			<div class="row" data-aos="fade-right" data-aos-duration="2000">
+			<div class="row">
 				<div class="col-md-6 mb-4">
-					<div class="card" (click)="showEventImage()" *ngFor="let card of cards; let i = index"
-						[ngClass]="{'active': i === currentCardIndex}">
+					<div class="card" (click)="showEventImage()">
 						<div class="card-body">
-							<h5 class="card-title">{{ card.title }}</h5>
-							<p class="card-text">{{ card.text }}</p>
+							<h5 class="card-title">Event</h5>
+							<p class="card-text">Hi, welcome to Rowgistic</p>
+						</div>
+					</div>
+
+					<div class="card" (click)="showBoatsImage()">
+						<div class="card-body">
+							<h5 class="card-title">Boats</h5>
+							<p class="card-text">Hi, welcome to Rowgistic</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 mb-4">
 					<div class="image-container">
-						<img [src]="cards[currentCardIndex].imageUrl" alt="Event Image" class="img-fluid">
+						
+						<div class="section_our_solution">
+							<div class="row">
+							  <div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="our_solution_category">
+								  <div class="solution_cards_box">
+									<div class="solution_card">
+									  <div class="hover_color_bubble"></div>
+									  <div class="so_top_icon">
+									<img src=".././../../assets/logo.png" height="50" alt="" srcset="">
+									  </div>
+									  <div class="solu_title">
+										<h3>Event Today</h3>
+									  </div>
+									  <div class="solu_description">
+										<p>
+                                            Event Name :  {{this.eventNames}}
+										</p>
+										<p>
+                                            Event Location : {{this.eventLocations}} 
+										</p>
+										<p>
+                                            Participant Name : 
+										</p>
+										<button type="button" class="read_more_btn">Read More</button>
+									  </div>
+									</div>
+								   
+								  </div>
+								
+								</div>
+							  </div>
+							</div>
+						  </div>
+
+
+						<!-- <img *ngIf="!showImage && selectedImage === ''" src="../../../assets/EventList.png"
+							alt="Event Image" class="img-fluid">
+
+							
+						<img *ngIf="showImage && selectedImage === 'event'" src="../../../assets/EventList.png"
+							alt="Event Image" class="img-fluid">
+						<img *ngIf="showImage && selectedImage === 'boats'" src="../../../assets/BoatList.png"
+							alt="Boats Image" class="img-fluid"> -->
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</div>
-
 
 
 	<div class="contactContainer" data-aos="fade-up" data-aos-duration="3000">
