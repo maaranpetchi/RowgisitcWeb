@@ -923,7 +923,11 @@ img.downloadLink {
 img.footerLogo {
 	height: 36px;
 }
-
+p.boatName {
+    display: flex;
+    justify-content: center;
+    padding-top: 22px;
+}
 .footer-col .social-links a {
 	display: inline-block;
 	height: 40px;
@@ -1120,7 +1124,7 @@ img.footerLogo {
 	  top: -3rem;
 	}
 	.our_solution_category {
-	  width: 50%;
+	  width: 77%;
 	  margin: 0 auto;
 	}
   }
