@@ -30,6 +30,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     NgxDocViewerModule,
     provideFirebaseApp( ()=> initializeApp(environment.firebaseConfig)),
     provideFirestore(()=> getFirestore()),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
   providers: [],

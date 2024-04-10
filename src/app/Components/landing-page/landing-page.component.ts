@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
 import { Firestore, collection, addDoc, collectionData, getDocs, where, query } from '@angular/fire/firestore';
 import { doc, getDoc } from 'firebase/firestore';
+import { AngularFireDatabase } from '@angular/fire/compat/database'; // Import for AngularFireDatabase
 
 @Component({
   selector: 'app-landing-page',
@@ -36,10 +37,14 @@ export class LandingPageComponent implements OnInit {
   eventTransactionData: any;
   eventTransactions: any;
   participants: any;
-  participantData:any;
+  participantData: any;
   participantFirstNames: any;
+  boatData: any;
+  boatImages: any[]=[];
+  boatSettingImages: any;
+  boatName: any;
 
-  constructor(private elRef: ElementRef, private route: Router, private fb: FormBuilder, private firestore: Firestore) {
+  constructor(private elRef: ElementRef, private route: Router, private fb: FormBuilder, private firestore: Firestore, private db: AngularFireDatabase) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -53,14 +58,14 @@ export class LandingPageComponent implements OnInit {
   ngOnInit() {
 
   }
+  
   isNavbarCollapsed = true;
   isBodyBlurred = false;
-
+  
   toggleNavbar() {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
-    this.isBodyBlurred = !this.isNavbarCollapsed;
+    this.isBodyBlurred = !this.isBodyBlurred;
   }
-
 
 
   stopSlideshow() {
@@ -107,7 +112,19 @@ export class LandingPageComponent implements OnInit {
     this.selectedImage = 'boats';
   }
 
+  expandCard(event: MouseEvent) {
+    const cardBody = (event.target as HTMLElement).closest('.card-body');
+    if (cardBody) {
+      cardBody.classList.add('expanded');
+    }
+  }
 
+  collapseCard(event: MouseEvent) {
+    const cardBody = (event.target as HTMLElement).closest('.card-body');
+    if (cardBody) {
+      cardBody.classList.remove('expanded');
+    }
+  }
 
   navigatetoTerms() {
     const url = '/Rowgistic/TermsAndCondition';
@@ -133,11 +150,14 @@ export class LandingPageComponent implements OnInit {
   }
   boatIds: any;
   participantIds: any;
+  boatsData: any[] = [];
   filterData() {
     const eventsRef = collection(this.firestore, 'events');
     getDocs(eventsRef).then(querySnapshot => {
       const eventData = querySnapshot.docs.map(snapshot => {
         const eventData = snapshot.data();
+        console.log(eventData, "EvetData");
+
         const eventTimestamp = eventData['eventDate'].toDate();
         const formattedEventDate = this.formatDate(eventTimestamp);
 
@@ -160,7 +180,7 @@ export class LandingPageComponent implements OnInit {
       console.log("Event Ids:", this.eventId);
 
       const eventTransactionsRef = collection(this.firestore, 'eventTransactions');
-      const q = query(eventTransactionsRef, where('eventId', '==',String(this.eventId)));
+      const q = query(eventTransactionsRef, where('eventId', '==', String(this.eventId)));
       getDocs(q).then(querySnapshot => {
         this.eventTransactions = querySnapshot.docs.map(snapshot => {
           this.eventTransactionData = snapshot.data();
@@ -170,32 +190,60 @@ export class LandingPageComponent implements OnInit {
         console.log('Event Transactions:', this.eventTransactions);
 
 
-    
-          this.boatIds = this.eventTransactions[0].boatId;
-          this.participantIds = this.eventTransactions[0].participants.map((participant:any) => participant.userId);
-    
-          console.log(this.boatIds,"BoatIds");
-          console.log(this.participantIds,"participantIds");
 
-            // Pass the participantIds array to the users collection
-    const usersRef = collection(this.firestore, 'users');
-    const q = query(usersRef, where('createdBy', 'in', this.participantIds));
-    getDocs(q).then(querySnapshot => {
-      this.participants = querySnapshot.docs.map(snapshot => {
-        this.participantData = snapshot.data();
-        const participantDoc = snapshot.ref.path;
-        return { ...this.participantData, participantDoc };
+        this.boatIds = this.eventTransactions[0].boatIds;
+        this.participantIds = this.eventTransactions[0].participants.map((participant: any) => participant.userId);
+
+        console.log(this.boatIds, "BoatIds");
+        console.log(this.participantIds, "participantIds");
+
+        ////Pass the Boat id
+        this.getBoats();
+
+        // Pass the participantIds array to the users collection
+        const usersRef = collection(this.firestore, 'users');
+        const q = query(usersRef, where('createdBy', 'in', this.participantIds));
+        getDocs(q).then(querySnapshot => {
+          this.participants = querySnapshot.docs.map(snapshot => {
+            this.participantData = snapshot.data();
+            const participantDoc = snapshot.ref.path;
+            return { ...this.participantData, participantDoc };
+          });
+          console.log('Participants:', this.participants);
+          this.participantFirstNames = this.participants.map((participant: any) => participant.firstName);
+          console.log('Participant First Names:', this.participantFirstNames);
+        })
+
       });
-      console.log('Participants:', this.participants);
-      this.participantFirstNames = this.participants.map( (participant:any) => participant.firstName);
-      console.log('Participant First Names:', this.participantFirstNames);
-    
-
-    })
-        });
 
     });
   }
+
+  getBoats() {
+    const boatsRef = collection(this.firestore, 'boats');
+
+    getDocs(boatsRef).then(querySnapshot => {
+      this.boatsData = querySnapshot.docs.map(snapshot => {
+        if (this.boatIds.includes(snapshot.id)) {
+          const boatData = snapshot.data();
+          console.log(boatData, "BoatDats");
+          this.boatImages = this.boatsData.map(boat => boat.boatImages);
+          console.log('Boat Images:', this.boatImages);
+
+          boatData['id'] = snapshot.id;
+          return boatData;
+        }
+        return null;
+      }).filter(boat => boat !== null);
+
+      console.log('Filtered Boats Data:', this.boatsData);
+      this.boatSettingImages = this.boatsData.map((participant: any) => participant.boatImages);
+console.log(this.boatSettingImages,"BoatSettingImages");
+this.boatName = this.boatsData.map((participant: any) => participant.boatName);
+    });
+  }
+
+
   onSubmit() {
     console.log('Form values:', this.contactForm.value);
 
@@ -221,4 +269,9 @@ export class LandingPageComponent implements OnInit {
       console.log(this.contactForm.value)
     }
   }
+
+
+
+
 }
+
