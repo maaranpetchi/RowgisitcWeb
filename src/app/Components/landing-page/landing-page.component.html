@@ -38,7 +38,7 @@
 				<div class="mx-auto"></div>
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link text-white" href="#">Contact Us</a>
+						<a class="nav-link text-white" routerLink="/Rowgistic/contactus">Contact Us</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#" id="navDownload"> Download the app </a>
@@ -65,60 +65,60 @@
 					aria-label="Slide 5"></button>
 			</div>
 			<div class="carousel-inner">
-				<div class="carousel-item active" data-bs-interval="2000">
+				<div class="carousel-item active" data-bs-interval="4000">
 					<img src="../../../assets/rowingBoat1.png" class="d-block w-100" alt="..." id="carouselImage">
 					<div class="carousel-caption  .d-block">
 						<h5 class="animated bounceInRight" style="animation-delay: 1s">Set up a whole rowgistic
 							competition
 							in a mobile app.</h5>
-						<p>Some representative placeholder content for the first slide.</p>
-						<a class="" href="#" id="navDownload1"> Download the app </a>
+						<p class="animated bounceInLeft" style="animation-delay:2s" >Some representative placeholder content for the first slide.</p>
+						<a class="animated bounceInRight" style="animation-delay:3s" href="#" id="navDownload1"> Download the app </a>
 
 					</div>
 				</div>
 
-				<div class="carousel-item" data-bs-interval="2000">
+				<div class="carousel-item" data-bs-interval="4000">
 					<img src="../../../assets/rowingBoat3.png" class="d-block w-100" alt="..." id="carouselImage">
 					<div class="carousel-caption  .d-block">
 						<h5 class="animated bounceInRight" style="animation-delay: 1s">Set up a whole rowgistic
 							competition
 							in a mobile app.</h5>
-						<p>Let's join with us to experience the real adventure.</p>
-						<a class="" href="#" id="navDownload1"> Download the app </a>
+						<p class="animated bounceInLeft" style="animation-delay:2s"  >Let's join with us to experience the real adventure.</p>
+						<a class="animated bounceInRight" style="animation-delay:3s"  href="#" id="navDownload1"> Download the app </a>
 
 					</div>
 				</div>
-				<div class="carousel-item" data-bs-interval="2000">
+				<div class="carousel-item" data-bs-interval="4000">
 					<img src="../../../assets/rowingBoat4.png" class="d-block w-100" alt="..." id="carouselImage">
 					<div class="carousel-caption  .d-block">
 						<h5 class="animated bounceInRight" style="animation-delay: 1s">Set up a whole rowgistic
 							competition
 							in a mobile app.</h5>
-						<p>Let's join with us to experience the real adventure.</p>
-						<a class="" href="#" id="navDownload1"> Download the app </a>
+						<p class="animated bounceInLeft" style="animation-delay:2s" >Let's join with us to experience the real adventure.</p>
+						<a class="animated bounceInRight" style="animation-delay:3s"  href="#" id="navDownload1"> Download the app </a>
 
 					</div>
 				</div>
-				<div class="carousel-item" data-bs-interval="2000">
+				<div class="carousel-item" data-bs-interval="4000">
 					<img src="../../../assets/rowingBoat5.png" class="d-block w-100" alt="..." id="carouselImage">
 					<div class="carousel-caption  .d-block">
 						<h5 class="animated bounceInRight" style="animation-delay: 1s">Set up a whole rowgistic
 							competition
 							in a mobile app.</h5>
-						<p>Let's join with us to experience the real adventure.</p>
-						<a class="" href="#" id="navDownload1"> Download the app </a>
+						<p class="animated bounceInLeft" style="animation-delay:2s" >Let's join with us to experience the real adventure.</p>
+						<a class="animated bounceInRight" style="animation-delay:3s"  href="#" id="navDownload1"> Download the app </a>
 
 					</div>
 				</div>
 
-				<div class="carousel-item" data-bs-interval="2000">
+				<div class="carousel-item" data-bs-interval="4000">
 					<img src="../../../assets/rowingBoat52.png" class="d-block w-100" alt="..." id="carouselImage">
 					<div class="carousel-caption  .d-block">
 						<h5 class="animated bounceInRight" style="animation-delay: 1s">Set up a whole rowgistic
 							competition
 							in a mobile app.</h5>
-						<p>Let's join with us to experience the real adventure.</p>
-						<a class="" href="#" id="navDownload1"> Download the app </a>
+						<p class="animated bounceInLeft" style="animation-delay:2s"  >Let's join with us to experience the real adventure.</p>
+						<a class="animated bounceInRight" style="animation-delay:3s"  href="#" id="navDownload1"> Download the app </a>
 
 					</div>
 				</div>
@@ -146,7 +146,7 @@
 				</div>
 
 				<div class="row">
-					<div class="col-md-6 mb-4">
+					<div class="col-md-6 mb-4" data-aos="fade-right" data-aos-duration="4000">
 						<div class="card" (click)="showEventImage()">
 							<div class="card-body card-hover" (mouseenter)="expandCard($event)"
 								(mouseleave)="collapseCard($event)">
@@ -157,27 +157,27 @@
 						<div class="card" (click)="showMarketPlaceImage()">
 							<div class="card-body card-hover" (mouseenter)="expandCard($event)"
 								(mouseleave)="collapseCard($event)">
-								<h5 class="card-title">MarketPlace</h5>
+								<h5 class="card-title">Boats</h5>
 								<p class="card-text">Hi, welcome to Rowgistic</p>
 							</div>
 						</div>
 						<div class="card" (click)="showBoatsImage()">
 							<div class="card-body card-hover" (mouseenter)="expandCard($event)"
 								(mouseleave)="collapseCard($event)">
-								<h5 class="card-title">Boats</h5>
+								<h5 class="card-title">Regatta</h5>
 								<p class="card-text">Hi, welcome to Rowgistic</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6 mb-4">
+					<div class="col-md-4 mb-4" data-aos="fade-left" data-aos-duration="4000">
 						<div class="image-container">
-							<img *ngIf="!showImage && selectedImage === ''" src="../../../assets/rowingBoat4.png"
+							<img *ngIf="!showImage && selectedImage === ''" src="../../../assets/EventName.png"
 								alt="Event Image" class="img-fluid">
-							<img *ngIf="showImage && selectedImage === 'event'" src="../../../assets/rowingBoat4.png"
+							<img *ngIf="showImage && selectedImage === 'event'" src="../../../assets/EventName.png"
 								alt="Event Image" class="img-fluid">
 							<img *ngIf="showImage && selectedImage === 'marketplace'"
-								src="../../../assets/rowingBoat2.jpeg" alt="MarketPlace Image" class="img-fluid">
-							<img *ngIf="showImage && selectedImage === 'boats'" src="../../../assets/rowingBoat1.jpeg"
+								src="../../../assets/EventBoat.png" alt="MarketPlace Image" class="img-fluid">
+							<img *ngIf="showImage && selectedImage === 'boats'" src="../../../assets/Regatta.png"
 								alt="Boats Image" class="img-fluid">
 						</div>
 					</div>
@@ -187,23 +187,92 @@
 
 		</div>
 
-		<div class="mobileDownloadBackground container-fluid">
-			<!-- <div class="topPic">
-			  <img src="../../../assets/top1.png" class="img-fluid" alt="Download App" id="topPics">
-			</div> -->
-			<div class="row" id="downloadSection">
-			  <div class="col-md-6">
-				<h2 class="downloadText">Available the Mobile App for Rowgistic, Download Now!</h2>
-				<p>Find, Join event</p>
-				<img src="../../../assets/APPSTORE (2).png" alt="" class="appstore img-fluid">
-				<img src="../../../assets/GOOGLEPLAY.png" alt="" class="appstore img-fluid">
-				<img src="../../../assets/QRCODE.png" alt="" class="qrcode img-fluid">
-			  </div>
-			  <div class="col-md-6">
-				<img src="../.././../assets/MobiePic.png" class="img-fluid mobilePic" alt="">
-			  </div>
+		<div class="container-fluid" data-aos="fade-left" data-aos-duration="4000">
+			<div class="row" id="mobileDownloadBackground">
+
 			</div>
-		  </div>
+
+			<div class="row" id="downloadSection">
+				<div class="col-md-6">
+					<h2 class="downloadText">Available the Mobile App for Rowgistic, Download Now!</h2>
+					<p>Find, Join event</p>
+					<img src="../../../assets/APPSTORE (2).png" alt="" class="appstore img-fluid">
+					<img src="../../../assets/GOOGLEPLAY.png" alt="" class="appstore img-fluid">
+					<img src="../../../assets/QRCODE.png" alt="" class="qrcode img-fluid">
+				</div>
+				<div class="col-md-6">
+					<img src="../.././../assets/MobiePic.png" class="img-fluid mobilePic" alt="">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="footer" data-aos="fade-down" data-aos-duration="4000">
+			<div class="container-fluid">
+				<footer class="py-5">
+					<div class="footer container-fluid">
+						<div class="subscribe row">
+							<div class="letter col-md-6 col-12">
+								<h5>Subscribe to our newsletter</h5>
+								<p>Monthly digest of whats new and exciting from us.</p>
+							</div>
+							<div class="text col-md-6 col-12">
+								<form class="form-inline">
+									<input type="text" name="Subscribe" id="subscribe" class="form-control mr-2"
+										placeholder="Enter your email">
+									<button type="button" class="btn btn-primary" id="btnSubscribe">Subscribe</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2 col-6">
+							<div class="downloadImages">
+								<img src="../../../assets/APPSTORE (2).png" alt="" class="img-fluid">
+								<img src="../../../assets/GOOGLEPLAY.png" alt="" class="img-fluid">
+							</div>
+						</div>
+						<div class="col-md-2 col-6">
+							<h5 class="footerHeader">Explore</h5>
+							<ul class="nav flex-column">
+								<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Institution</a></li>
+								<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Download the app</a></li>
+							</ul>
+						</div>
+						<div class="col-md-2 col-6">
+							<h5 class="footerHeader">About</h5>
+							<ul class="nav flex-column">
+								<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About Rowgistic</a></li>
+								<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact US</a></li>
+								<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy Policy</a></li>
+								<li class="nav-item mb-2"><a (click)="navigatetoTerms()" style="cursor: pointer;" class="nav-link p-0 text-muted">Terms of service</a></li>
+							</ul>
+						</div>
+						<div class="col-md-2 col-6">
+							<h5 class="footerHeader">Resources</h5>
+							<ul class="nav flex-column">
+								<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Articles</a></li>
+								<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+								<li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Events</a></li>
+							</ul>
+						</div>
+					</div>
+					
+
+					<div class="d-flex justify-content-between py-4 my-4 border-top">
+						<p>&copy; 2024 Company, Inc. All rights reserved.</p>
+						<ul class="list-unstyled d-flex">
+					
+							<li class="ms-3"><a class="link-dark" href="https://www.facebook.com/profile.php?id=61557922531506"> <i class="fab fa-facebook-f"></i>
+							</a></li>
+							<li class="ms-3"><a class="link-dark" href="https://twitter.com/Rowgistic"><i class="fab fa-twitter"></i> </a></li>
+							<li class="ms-3"><a class="link-dark" href="https://www.linkedin.com/company/rowgistic/"><i class="fab fa-linkedin-in"></i></a></li>
+						</ul>
+					</div>
+				</footer>
+			</div>
+		</div>
+
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
 	</script>

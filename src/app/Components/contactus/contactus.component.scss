@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+	font-family: "Inter", sans-serif;
+	padding: 0%;
+	margin: 0%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	font-weight: bold;
+}
+
+.eventHeading {
+    text-align: center;
+}
+
+.downloadText {
+    padding-bottom: 12px;
+    font-size: 36px;
+    background: -webkit-linear-gradient(#F36820, #DF2269);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  i {
+    padding-right: 20px;
+    /* padding: 14px; */
+}
+
+.imageSetting{
+    background-size: contain;
+    height: 109px;
+    background-image: url(../../../assets/top1.png);
+    background-repeat: no-repeat;
+}

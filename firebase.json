@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist\\rowgistic-web",
+    "public": "dist/rowgistic-web",
     "ignore": [
       "firebase.json",
       "**/.*",

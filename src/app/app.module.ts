@@ -13,26 +13,31 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database'; // Fo
 import { environment } from 'src/Environments/environment';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { ContactusComponent } from './Components/contactus/contactus.component';
 
+
+import { FirestoreModule } from '@angular/fire/firestore'; // Import the correct module
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
+    ContactusComponent,
     TermsandconditionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    
     ReactiveFormsModule,
     HttpClientModule,
     NgxDocViewerModule,
     provideFirebaseApp( ()=> initializeApp(environment.firebaseConfig)),
     provideFirestore(()=> getFirestore()),
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
-  ],
+    AngularFireDatabaseModule,
+    AngularFireModule  ],
   providers: [],
   bootstrap: [AppComponent]
 })

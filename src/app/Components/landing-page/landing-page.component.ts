@@ -44,7 +44,7 @@ export class LandingPageComponent implements OnInit {
   boatSettingImages: any;
   boatName: any;
 
-  constructor(private elRef: ElementRef, private route: Router, private fb: FormBuilder, private firestore: Firestore, private db: AngularFireDatabase) {
+  constructor(private elRef: ElementRef, private route: Router, private fb: FormBuilder, private firestore: Firestore, private db: AngularFireDatabase,) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
